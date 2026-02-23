@@ -23,9 +23,14 @@ st.warning(
 # -----------------------------
 # Load Model
 # -----------------------------
+from pathlib import Path
+import tensorflow as tf
+import streamlit as st
+
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model("leukemia_cnn_model.h5")
+    model_path = Path(__file__).parent / "leukemia_cnn_model.h5"
+    return tf.keras.models.load_model(model_path)
 
 model = load_model()
 
